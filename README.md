@@ -16,6 +16,10 @@ Ayrat Gimranov
 
 ![UML](./src/img/UML_lab26.png)
 
+## CodeSandbox links
+
+[Link1](https://codesandbox.io/s/lab26-resty-rlody?file=/README.md)
+
 ## Resources
 
-[CodeFellows JS 401 - Lab 26 starter Code](https://github.com/codefellows/seattle-javascript-401n19/tree/main/class-26/lab/starter-code) 
+[CodeFellows JS 401 - Lab 26 starter Code](https://github.com/codefellows/seattle-javascript-401n19/tree/main/class-26/lab/starter-code)
