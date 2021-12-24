@@ -28,9 +28,9 @@ Ayrat Gimranov
 
 ![UML](./src/img/UML_lab26.png)
 
-<!-- ## CodeSandbox links
+## CodeSandbox links
 
-[Link1](https://codesandbox.io/s/lab26-resty-rlody?file=/README.md) -->
+[Link](https://codesandbox.io/s/sharp-cookies-ilwg4)
 
 ## Resources
 
