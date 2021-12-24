@@ -4,21 +4,39 @@ $radius: 40%;
 form {
   display: inline-block;
   margin: auto;
-  width: 200px;
+  width: 300px;
+  background-color: rgb(201, 216, 241);
+  padding: 1rem;
+  border-radius: 10px;
+
+  input {
+    margin: 0 0.5rem;
+    width: 180px
+  }
 
   label {
     display: flex;
-    margin: 1rem 0;
+    margin: 2rem 0;
 
     &.methods {
       span {
         cursor: pointer;
         margin-right: 1rem;
         padding: .25rem .5rem;
-        background: #ccc;
+        background: rgb(230, 227, 227);
+        border: 0.08rem solid rgb(173, 172, 172);
+        box-shadow: .08rem .04rem .04rem rgb(150, 149, 149);
 
-        &:hover, &.active {
-          background: #fff;
+        &:hover {
+          background: rgb(99, 145, 206);
+        }
+
+        &.active {
+          background: rgb(46, 69, 95);
+          color: white;
+          &:hover {
+            background: rgb(78, 101, 145);
+          }
         }
       }
     }
