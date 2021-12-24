@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import './app.scss';
 
@@ -19,24 +20,38 @@ class App extends React.Component {
     };
   }
 
-  callApi = (requestParams) => {
+  callApi = async (requestParams) => {
     // mock output
-    const data = {
+    const mockData = {
       count: 2,
       results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
+        { name: 'fake thing 1', url: 'http://fakethings.com/1' },
+        { name: 'fake thing 2', url: 'http://fakethings.com/2' },
       ],
     };
-    this.setState({data, requestParams});
+
+    let data;
+    try {
+      data = await axios({
+        method: requestParams.method,
+        url: requestParams.url,
+        data: requestParams.data
+      });
+    } catch(e){
+      data = mockData;
+    }
+
+    this.setState({ data, requestParams });
   }
 
   render() {
     return (
       <React.Fragment>
         <Header />
-        <div>Request Method: {this.state.requestParams.method}</div>
-        <div>URL: {this.state.requestParams.url}</div>
+        <section>
+          <div>Request Method: {this.state.requestParams.method}</div>
+          <div>URL: {this.state.requestParams.url}</div>
+        </section>
         <Form handleApiCall={this.callApi} />
         <Results data={this.state.data} />
         <Footer />
