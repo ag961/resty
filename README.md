@@ -1,12 +1,24 @@
-# Lab26 - RESTy - Component Based UI
+# Lab27 - RESTy - useState() Hook
 
 ## Description
 
-Setting up the basic scaffolding of the application.
+### Phase 2 Requirements
 
-- Convert React class child components of App.js into functional components.
-- Each of the components use their own .scss file for styling.
-- Core application functionality should remain unchanged
+In phase 2, we will be receiving user input in preparation of connecting to live APIs, using the useState() hook in our functional components
+
+The following user stories detail the major functionality for this phase of the project.
+
+- As a user, I want to enter the REST Method and URL to an API
+- As a user, I want to see a summary of my request as well as results returned from an API request in my browser in a readable format
+
+#### Application Flow:
+
+1. User enters an API URL
+2. Chooses a REST Method
+3. Clicks the “Go” button
+4. Application fetches data from the URL given, with the method specified
+5. Displays the response headers and results separately
+6. Both headers and results should be “pretty printed” JSON
 
 ## Author
 
@@ -16,9 +28,9 @@ Ayrat Gimranov
 
 ![UML](./src/img/UML_lab26.png)
 
-## CodeSandbox links
+<!-- ## CodeSandbox links
 
-[Link1](https://codesandbox.io/s/lab26-resty-rlody?file=/README.md)
+[Link1](https://codesandbox.io/s/lab26-resty-rlody?file=/README.md) -->
 
 ## Resources
 
