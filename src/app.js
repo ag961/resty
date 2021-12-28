@@ -17,6 +17,8 @@ class App extends React.Component {
     this.state = {
       data: null,
       requestParams: {},
+      loading: false,
+      title: '-RESTy-'
     };
   }
 
@@ -32,29 +34,34 @@ class App extends React.Component {
 
     let data;
     try {
+      this.setState({
+        loading: true
+      })
       data = await axios({
         method: requestParams.method,
         url: requestParams.url,
         data: requestParams.data
       });
-    } catch(e){
+    } catch (e) {
       data = mockData;
     }
 
-    this.setState({ data, requestParams });
+    this.setState({ data, requestParams, loading: false });
   }
 
   render() {
+    let footerText = '&copy; Ayrat Gimranov 2021'
     return (
       <React.Fragment>
-        <Header />
+        <Header title={this.state.title}/>
         <section>
           <div>Request Method: {this.state.requestParams.method}</div>
           <div>URL: {this.state.requestParams.url}</div>
         </section>
         <Form handleApiCall={this.callApi} />
-        <Results data={this.state.data} />
-        <Footer />
+        {this.state.loading ? <div><h1>Loading...</h1></div>
+          : <Results data={this.state.data} />}
+        <Footer footerText={footerText}/>
       </React.Fragment>
     );
   }
