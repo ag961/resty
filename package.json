@@ -4,6 +4,7 @@
   "description": "resty",
   "private": true,
   "keywords": [],
+  "homepage": "https://github.com/ag961/resty",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
