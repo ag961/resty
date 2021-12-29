@@ -12,7 +12,7 @@ jobs:
       -
         name: Build
         run: |
-          mkdir public
+          mkdir public2
           cat > public/index.html <<EOL
           <!doctype html>
           <html>
