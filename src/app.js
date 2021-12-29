@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   render() {
-    let footerText = '&copy; Ayrat Gimranov 2021'
+    let footerText = '&copy; Ayrat Gimranov 2022'
     return (
       <React.Fragment>
         <Header title={this.state.title}/>
