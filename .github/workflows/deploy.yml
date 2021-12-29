@@ -1,29 +1,33 @@
-name: resty
+name: website
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 
 jobs:
-  build-test-deploy:
+  publish:
     runs-on: ubuntu-latest
-    steps: 
-      - 
+    steps:
+      -
         name: Checkout
-        uses: actions/checkout@v2
-      - 
-        name: Set-up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-      - run: npm install
-      - run: npm run build
-      - run: npm test
-      - 
+        uses: actions/checkout@v1
+      -
+        name: Build
+        run: |
+          mkdir public
+          cat > public/index.html <<EOL
+          <!doctype html>
+          <html>
+            <head>
+              <title>GitHub Pages deployed!</title>
+            </head>
+            <body>
+              <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+            </body>
+          </html>
+          EOL
+      -
         name: Deploy
-        uses: crazy-max/ghaction-github-pages@v2
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
           build_dir: public
