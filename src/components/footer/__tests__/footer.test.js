@@ -3,23 +3,23 @@ import '@testing-library/jest-dom';
 import Footer from '../index';
 
 describe('Footer', () => {
-  let footer = 'copyright';
-  it('should render same text passed as a prop by getByText', ()=>{
-    render(<Footer footerText={footer} />)
-    const h1Element = screen.getByText(footer);
-    expect(h1Element).toBeInTheDocument();
+ 
+  it('should render text Ayrat', ()=>{
+    render(<Footer />)
+    const author = screen.getByText(/Ayrat/i);
+    expect(author).toBeInTheDocument();
   })
 
-  it('should render same text passed as a prop by getByRole', ()=>{
+  it('should render text by getByRole', ()=>{
    
-    render(<Footer footerText={footer} />)
+    render(<Footer />)
     const h1Element = screen.getByRole('contentinfo');
     expect(h1Element).toBeInTheDocument();
   })
 
-  it('should render same text passed as a prop by getByTitle', ()=>{
+  it('should render text getByTitle', ()=>{
   
-    render(<Footer footerText={footer} />)
+    render(<Footer />)
     const h1Element = screen.getByTitle('Footer-text');
     expect(h1Element).toBeInTheDocument();
   })
