@@ -1,6 +1,5 @@
 import React from "react";
 import "./results.scss";
-import 'react-json-pretty/themes/adventure_time.css';
 import ReactJson from 'react-json-view';
 
 const Results = (props) => {
