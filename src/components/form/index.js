@@ -20,13 +20,14 @@ function Form(props) {
     props.handleApiCall(formData);
     setMethod('');
     setUrl('');
+    setData('');
   };
 
   const handleMethodChoice = (e) => {
     setMethod(e.target.innerText);
   }
 
-  const handleChange = (e) => {
+  const handleUrlChange = (e) => {
     setUrl(e.target.value);
   }
 
@@ -44,7 +45,7 @@ function Form(props) {
           <input
             name="url"
             type="text"
-            onChange={handleChange}
+            onChange={handleUrlChange}
             placeholder="https://pokeapi.co/api/v2/pokemon" />
           <button type="submit">GO!</button>
         </label>

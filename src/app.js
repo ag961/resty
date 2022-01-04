@@ -1,70 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import './app.scss';
 
-// Let's talk about using index.js and some other name in the component folder
-// There's pros and cons for each way of doing this ...
 import Header from './components/header';
 import Footer from './components/footer';
 import Form from './components/form';
 import Results from './components/results';
 
-class App extends React.Component {
+function App() {
+  const [requestParams, setRequestParams] = useState({});
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [errorResult, setErrorResult] = useState(false);
+  const isInitialMount = useRef(true);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-      loading: false,
-      title: '-RESTy-'
-    };
+  const callApi = async (requestParams) => {
+    setRequestParams(requestParams);
+    setLoading(true);
   }
 
-  callApi = async (requestParams) => {
-    // mock output
-    const mockData = {
-      count: 2,
-      results: [
-        { name: 'fake thing 1', url: 'http://fakethings.com/1' },
-        { name: 'fake thing 2', url: 'http://fakethings.com/2' },
-      ],
-    };
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    }
+    else {
+      async function fetchData() {
+        try {
+          let response = await axios({
+            method: requestParams.method,
+            url: requestParams.url,
+            data: requestParams.data
+          });
+          setResponse(response);
+        } catch (e) {
+          console.log(e);
+          setErrorResult(true)
+        }
+        setLoading(false);
+      }
 
-    let data;
-    try {
-      this.setState({
-        loading: true
-      })
-      data = await axios({
-        method: requestParams.method,
-        url: requestParams.url,
-        data: requestParams.data
-      });
-    } catch (e) {
-      data = mockData;
+      fetchData();
+
+      return () => {
+        setResponse(null);
+        setErrorResult(false);
+      }
     }
 
-    this.setState({ data, requestParams, loading: false });
-  }
+  }, [requestParams])
 
-  render() {
-    let footerText = '&copy; Ayrat Gimranov 2022'
-    return (
-      <React.Fragment>
-        <Header title={this.state.title}/>
-        <section>
-          <div>Request Method: {this.state.requestParams.method}</div>
-          <div>URL: {this.state.requestParams.url}</div>
-        </section>
-        <Form handleApiCall={this.callApi} />
-        {this.state.loading ? <div><h1>Loading...</h1></div>
-          : <Results data={this.state.data} />}
-        <Footer footerText={footerText}/>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <Header />
+      <section>
+        <div> Request Method: {requestParams.method} : </div>
+        <div>URL: {requestParams.url}</div>
+      </section>
+      <Form handleApiCall={callApi} />
+      {loading ? <div><h1>Loading...</h1></div>
+        : <Results data={response} errorResult={errorResult}/>}
+      <Footer />
+    </React.Fragment>
+  )
 }
 
 export default App;

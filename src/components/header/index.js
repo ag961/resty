@@ -1,9 +1,9 @@
 import React from "react";
 import "./header.scss";
 
-const Header = ({ title }) => (
+const Header = () => (
   <header>
-    <h1>{title}</h1>
+    <h1>{'-RESTy-'}</h1>
   </header>
 );
 
