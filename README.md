@@ -1,24 +1,31 @@
-# Lab28 - RESTy - useEffect() Hook
+# Lab29 - RESTy - Advanced State with Reducers
 
 ## Description
 
-### Phase 2 Requirements
+RESTy Phase 4: Track History
 
-In phase 3, we will be connecting RESTy to live APIs, fetching and displaying remote data. Our primary focus will be to service GET requests
+### Phase 4 Requirements
+
+In phase 4, we will be tracking every API call and storing it in history
 
 The following user stories detail the major functionality for this phase of the project.
 
-As a user, I want to enter the URL to an API and issue a GET request so that I can retrieve it’s data
-As a user, I want to see the results returned from an API request in my browser in a readable format [Ref](https://codefellows.github.io/code-401-javascript-guide/curriculum/class-28/lab/)
+- *As a user, I want to see a list of my previous API calls, so that I can see the results again, quickly*
 
-#### Application Flow:
+### Application Flow
 
-1. User enters an API URL
-2. Chooses a REST Method
-3. Clicks the “Go” button
-4. Application fetches data from the URL given, with the method specified
-5. Displays the response headers and results separately
-6. Both headers and results should be “pretty printed” JSON
+- User enters an API URL
+- Chooses a REST Method
+- Clicks the “Go” button
+- Application fetches data from the URL given, with the method specified
+- Application stores the API request and returned data into state
+- Updates the list of previous API calls
+- Application Displays the response headers and results separately
+- Both headers and results should be “pretty printed” JSON
+
+## Live site
+
+<https://ag961.github.io/resty/>
 
 ## Author
 
