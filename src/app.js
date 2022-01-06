@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useReducer } from 'react';
+import React, { useEffect, useRef, useReducer } from 'react';
 import axios from 'axios';
 
 import './app.scss';
