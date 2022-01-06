@@ -9,17 +9,17 @@ function Form(props) {
   const [data, setData] = useState('');
 
   const handleSubmit = (e) => {
-    console.log(method)
+    // console.log(method)
     e.preventDefault();
 
     const formData = {
       method: method || "GET",
-      url: url || "https://pokeapi.co/api/v2/pokemon",
+      url: url || "https://catfact.ninja/fact",
       data,
     };
     props.handleApiCall(formData);
     setMethod('');
-    setUrl('');
+    // setUrl('');
     setData('');
   };
 
@@ -46,7 +46,7 @@ function Form(props) {
             name="url"
             type="text"
             onChange={handleUrlChange}
-            placeholder="https://pokeapi.co/api/v2/pokemon" />
+            placeholder="https://catfact.ninja/fact" />
           <button type="submit">GO!</button>
         </label>
         <label>
